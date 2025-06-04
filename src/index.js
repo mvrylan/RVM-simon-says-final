@@ -81,8 +81,12 @@ padContainer.addEventListener("click", padHandler);
  *
  */
 function startButtonHandler() {
-  // TODO: Write your code here.
-
+  // US-02 #2 DONE
+  setLevel();
+  roundCount++;
+  startButton.classList.add("hidden");
+  statusSpan.classList.remove("hidden");
+  playComputerTurn();
   return { startButton, statusSpan };
 }
 
@@ -137,7 +141,7 @@ function padHandler(event) {
  *
  */
 function setLevel(level = 1) {
-  // TODO: Write your code here.
+  // US-02 #1: DONE
   switch (level) {
     case 1:
       return 8;
