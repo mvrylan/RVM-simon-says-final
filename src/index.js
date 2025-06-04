@@ -138,6 +138,18 @@ function padHandler(event) {
  */
 function setLevel(level = 1) {
   // TODO: Write your code here.
+  switch (level) {
+    case 1:
+      return 8;
+    case 2: 
+      return 14;
+    case 3:
+      return 20;
+    case 4:
+      return 31;
+    default:
+      return ("Please enter level 1, 2, 3, or 4")
+  }
 }
 
 /**
