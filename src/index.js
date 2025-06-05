@@ -7,6 +7,8 @@
  const statusSpan = document.querySelector(".js-status"); // Use querySelector() to get the status element
  const heading = document.querySelector(".js-heading"); // Use querySelector() to get the heading element
  const padContainer = document.querySelector(".js-pad-container"); // Use querySelector() to get the heading element
+ // My additions:
+ const levelBtn = document.querySelectorAll(".js-level-btn");
 
 /**
  * VARIABLES
@@ -60,8 +62,12 @@ let roundCount = 0; // track the number of rounds that have been played so far
  */
 
 padContainer.addEventListener("click", padHandler);
-// TODO: Add an event listener `startButtonHandler()` to startButton.
+// DONE
 startButton.addEventListener("click", startButtonHandler);
+// My additions:
+levelBtn.forEach(button => {
+    button.addEventListener("click", setDifficulty);
+})
 
 /**
  * EVENT HANDLERS
@@ -122,6 +128,35 @@ function padHandler(event) {
   pad.sound.play();
   checkPress(color);
   return color;
+}
+
+function setDifficulty(event) {
+  levelBtn.forEach(button => button.classList.remove("bold"));
+  event.target.classList.add("bold");
+  const thisButton = event.target;
+
+  switch (true) {
+      case this.classList.contains("js-easy"):
+          setLevel(1);
+          console.log("Level 1 Selected");
+          break;
+      case this.classList.contains("js-medium"):
+          setLevel(2);
+          console.log("Level 2 selected");
+          break;
+      case this.classList.contains("js-hard"):
+          setLevel(3);
+          console.log("Level 3 selected");
+          break;
+      case this.classList.contains("js-very-hard"):
+          setLevel(4);
+          console.log("Level 4 selected");
+          break;
+      default:
+          setLevel(1);
+          console.log("Level 1 selected");
+          break;
+  }
 }
 
 /**

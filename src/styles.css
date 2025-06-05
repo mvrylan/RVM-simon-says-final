@@ -33,6 +33,24 @@ h1 {
   text-align: center;
 }
 
+.level-buttons {
+  padding-bottom: 20px;
+}
+
+.level-button {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0 10px;
+  color: #2bbcff;
+  background-color: transparent;
+  border: 1px solid #2bbcff;
+}
+
+.bold {
+  font-weight: bold;
+  color: #2B75FF;
+  border: 1px solid #2B75FF;
+}
+
 .start-button {
   display: inline-block;
   height: 38px;
