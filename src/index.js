@@ -112,7 +112,10 @@ function padHandler(event) {
   const { color } = event.target.dataset;
   if (!color) return;
 
-  // TODO: Write your code here.
+  // US-04 #2 DONE
+  const pad = pads.find((pad) => pad.color === color);
+  pad.sound.play();
+  checkPress(color);
   return color;
 }
 
@@ -203,9 +206,9 @@ function setText(element, text) {
 function activatePad(color) {
   // US-03 #2 NEEDS WORK
   const pad = pads.find((pad) => pad.color === color);
-  pad.classList.add("activated");
+  pad.selector.classList.add("activated");
   pad.sound.play();
-  setTimeout(pad.classList.remove("activated"), 500);
+  setTimeout(pad.selector.classList.remove("activated"), 500);
 }
 
 /**
@@ -225,8 +228,8 @@ function activatePad(color) {
 function activatePads(sequence) {
   // US-03 #3 DONE
   let delay = 0;
-  sequence.forEach(() => {
-    setTimeout(activatePad(), delay);
+  sequence.forEach((color) => {
+    setTimeout(activatePad(color), delay);
     delay += 600;
   });
 }
@@ -255,9 +258,12 @@ function activatePads(sequence) {
  * sequence.
  */
  function playComputerTurn() {
-  // TODO: Write your code here.
+  // US-03 #4 REVISIT
   padContainer.classList.add("unclickable");
-
+  setText(statusSpan, ("The computer's turn..."));
+  setText(heading, (`Round ${roundCount} of ${maxRoundCount}`));
+  computerSequence.push(getRandomItem(["red", "blue", "green", "yellow"]));
+  activatePads(computerSequence);
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
@@ -271,6 +277,7 @@ function activatePads(sequence) {
  */
 function playHumanTurn() {
   // TODO: Write your code here.
+  padContainer.classList.remove("unclickable");
 }
 
 /**
@@ -296,7 +303,17 @@ function playHumanTurn() {
  *
  */
 function checkPress(color) {
-  // TODO: Write your code here.
+  // US-04 DONE
+  playerSequence.push(color);
+  const index = playerSequence.length - 1;
+  const remainingPresses = computerSequence.length - playerSequence.length;
+  setText(statusSpan, (`${remainingPresses} presses left`));
+  if (computerSequence[index] !== playerSequence[index]) {
+    setText(statusSpan, ("You lost... Play again?"));
+    resetGame();
+    return;
+  }
+  if (remainingPresses === 0) checkRound();
 }
 
 /**
