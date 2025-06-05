@@ -173,16 +173,17 @@ function setLevel(level = 1) {
  * getRandomItem([1, 2, 3, 4]) //> returns 1
  */
 function getRandomItem(collection) {
-  // if (collection.length === 0) return null;
-  // const randomIndex = Math.floor(Math.random() * collection.length);
-  // return collection[randomIndex];
+  if (collection.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * collection.length);
+  return collection[randomIndex];
 }
 
 /**
  * Sets the status text of a given HTML element with a given a message
  */
 function setText(element, text) {
-  // TODO: Write your code here.
+  // US-03 #1: DONE
+  element.textContent = text;
   return element;
 }
 
@@ -200,7 +201,11 @@ function setText(element, text) {
  */
 
 function activatePad(color) {
-  // TODO: Write your code here.
+  // US-03 #2 NEEDS WORK
+  const pad = pads.find((pad) => pad.color === color);
+  pad.classList.add("activated");
+  pad.sound.play();
+  setTimeout(pad.classList.remove("activated"), 500);
 }
 
 /**
@@ -218,7 +223,12 @@ function activatePad(color) {
  */
 
 function activatePads(sequence) {
-  // TODO: Write your code here.
+  // US-03 #3 DONE
+  let delay = 0;
+  sequence.forEach(() => {
+    setTimeout(activatePad(), delay);
+    delay += 600;
+  });
 }
 
 /**
@@ -246,6 +256,8 @@ function activatePads(sequence) {
  */
  function playComputerTurn() {
   // TODO: Write your code here.
+  padContainer.classList.add("unclickable");
+
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
