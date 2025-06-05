@@ -130,6 +130,7 @@ function padHandler(event) {
   return color;
 }
 
+// setLevel --> setDifficulty to accomodate buttons
 function setDifficulty(event) {
   levelBtn.forEach(button => button.classList.remove("bold"));
   event.target.classList.add("bold");
