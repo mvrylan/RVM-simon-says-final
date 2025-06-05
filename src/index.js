@@ -17,6 +17,7 @@ let computerSequence = []; // track the computer-generated sequence of pad press
 let playerSequence = []; // track the player-generated sequence of pad presses
 let maxRoundCount = 0; // the max number of rounds, varies with the chosen level
 let roundCount = 0; // track the number of rounds that have been played so far
+let levelRating = 8;
 
 /**
  *
@@ -89,7 +90,6 @@ levelBtn.forEach(button => {
  */
 function startButtonHandler() {
   // US-02 #2 DONE
-  levelRating = setLevel();
   if (typeof levelRating === "number") {
     maxRoundCount = levelRating;
   } else {
@@ -133,28 +133,22 @@ function padHandler(event) {
 function setDifficulty(event) {
   levelBtn.forEach(button => button.classList.remove("bold"));
   event.target.classList.add("bold");
-  const thisButton = event.target;
 
   switch (true) {
       case this.classList.contains("js-easy"):
-          setLevel(1);
-          console.log("Level 1 Selected");
+          levelRating = 8;
           break;
       case this.classList.contains("js-medium"):
-          setLevel(2);
-          console.log("Level 2 selected");
+          levelRating = 14;
           break;
       case this.classList.contains("js-hard"):
-          setLevel(3);
-          console.log("Level 3 selected");
+          levelRating = 20;
           break;
       case this.classList.contains("js-very-hard"):
-          setLevel(4);
-          console.log("Level 4 selected");
+          levelRating = 31;
           break;
       default:
-          setLevel(1);
-          console.log("Level 1 selected");
+          levelRating = 8;
           break;
   }
 }
@@ -184,6 +178,8 @@ function setDifficulty(event) {
  * setLevel(8) //> returns "Please enter level 1, 2, 3, or 4";
  *
  */
+
+/*
 function setLevel(level = 1) {
   // US-02 #1: DONE
   switch (level) {
@@ -199,6 +195,7 @@ function setLevel(level = 1) {
       return ("Please enter level 1, 2, 3, or 4")
   }
 }
+*/
 
 /**
  * Returns a randomly selected item from a given array.
@@ -301,10 +298,12 @@ function activatePads(sequence) {
  function playComputerTurn() {
   // US-03 #4 REVISIT
   padContainer.classList.add("unclickable");
+  levelBtn.forEach(button => button.classList.add("unclickable"));
   setText(statusSpan, ("The computer's turn..."));
   setText(heading, (`Round ${roundCount} of ${maxRoundCount}`));
   computerSequence.push(getRandomItem(["red", "blue", "green", "yellow"]));
   activatePads(computerSequence);
+  console.log(computerSequence);
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
@@ -406,6 +405,7 @@ function resetGame(text) {
   startButton.classList.remove("hidden");
   statusSpan.classList.add("hidden");
   padContainer.classList.add("unclickable");
+  levelBtn.forEach(button => button.classList.remove("unclickable"));
 }
 
 /**
@@ -423,7 +423,7 @@ window.maxRoundCount = maxRoundCount;
 window.roundCount = roundCount;
 window.startButtonHandler = startButtonHandler;
 window.padHandler = padHandler;
-window.setLevel = setLevel;
+// window.setLevel = setLevel; /* CODED OUT FOR ADJUSTMENTS TO DIFFICULTY FUNCTIONALITY */
 window.getRandomItem = getRandomItem;
 window.setText = setText;
 window.activatePad = activatePad;

@@ -48,7 +48,7 @@ h1 {
 .bold {
   font-weight: bold;
   color: #2B75FF;
-  border: 1px solid #2B75FF;
+  border: 2px solid #2B75FF;
 }
 
 .start-button {
