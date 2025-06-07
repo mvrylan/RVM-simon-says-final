@@ -3,18 +3,19 @@
  */
 
  const startButton = document.querySelector(".js-start-button");
- const statusSpan = document.querySelector(".js-status"); // Use querySelector() to get the status element
- const heading = document.querySelector(".js-heading"); // Use querySelector() to get the heading element
- const padContainer = document.querySelector(".js-pad-container"); // Use querySelector() to get the heading element
+ const statusSpan = document.querySelector(".js-status"); 
+ const heading = document.querySelector(".js-heading"); 
+ const padContainer = document.querySelector(".js-pad-container"); 
  // Level Button Selector added:
  const levelBtn = document.querySelectorAll(".js-level-btn");
 
 /**
  * VARIABLES
  */
-let computerSequence = [];
-let playerSequence = [];
-let maxRoundCount = 0;
+let computerSequence = []; 
+let playerSequence = []; 
+let maxRoundCount = 0; 
+let roundCount = 0;
 let levelRating = 8;
 
  const pads = [
@@ -46,15 +47,14 @@ let levelRating = 8;
 
 padContainer.addEventListener("click", padHandler);
 startButton.addEventListener("click", startButtonHandler);
-// My additions for difficulty buttons:
+// My additions:
 levelBtn.forEach(button => {
-    button.addEventListener("click", setDifficulty);
+    button.addEventListener("click", setLevel);
 })
 
 /**
  * EVENT HANDLERS
  */
-
 
 
 function startButtonHandler() {
@@ -70,7 +70,6 @@ function startButtonHandler() {
   return { startButton, statusSpan };
 }
 
-
 function padHandler(event) {
   const { color } = event.target.dataset;
   if (!color) return;
@@ -81,8 +80,8 @@ function padHandler(event) {
   return color;
 }
 
-// rolled setLevel --> setDifficulty to accomodate buttons
-function setDifficulty(event) {
+// setLevel modified to accomodate addition of difficulty buttons
+function setLevel(event) {
   levelBtn.forEach(button => button.classList.remove("bold"));
   event.target.classList.add("bold");
 
@@ -174,7 +173,6 @@ function checkRound() {
     setText(statusSpan, "Good... keep going!");
     setTimeout(() => playComputerTurn(), 1000);
   }
-
 }
 
 function resetGame(text) {
@@ -205,7 +203,7 @@ window.maxRoundCount = maxRoundCount;
 window.roundCount = roundCount;
 window.startButtonHandler = startButtonHandler;
 window.padHandler = padHandler;
-// window.setLevel = setLevel; /* CODED OUT FOR ADJUSTMENTS TO DIFFICULTY FUNCTIONALITY */
+window.setLevel = setLevel;
 window.getRandomItem = getRandomItem;
 window.setText = setText;
 window.activatePad = activatePad;
