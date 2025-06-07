@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap');
 
 html {
-  background: url('../assets/background.png') no-repeat center center fixed;
+  /* background: url('../assets/background.png') no-repeat center center fixed; */
+  background: url('../assets/zen-background-simon-says.jpeg') no-repeat center fixed;
   box-sizing: border-box;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -11,7 +12,7 @@ html {
 }
 
 body {
-  color: yellow;
+  color: #F9F1CF;
   font-family: 'Rubik Microbe', sans-serif;
   display: flex;
   justify-content: center;
@@ -20,8 +21,9 @@ body {
 }
 
 main {
-  background-color: #000;
+  background-color: #373E41 /* #000 */;
   padding: 40px;
+  border-radius: 250px;
 }
 
 h1 {
@@ -40,36 +42,36 @@ h1 {
 .level-button {
   font-family: 'Courier New', Courier, monospace;
   padding: 0 10px;
-  color: #2bbcff;
+  color: #7FD6FF;
   background-color: transparent;
-  border: 1px solid #2bbcff;
+  border: 1px solid #7FD6FF;
 }
 
 .bold {
   font-weight: bold;
-  color: #2B75FF;
-  border: 2px solid #2B75FF;
+  color: #70D2FF;
+  border: 2px solid #70D2FF;
 }
 
 .start-button {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: yellow;
+  color: #F9F1CF;
   text-align: center;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   background-color: transparent;
-  border: 1px solid yellow;
+  border: 1px solid #F9F1CF;
   cursor: pointer;
 }
 
 .start-button:hover {
-  color: greenyellow;
-  font-size: 18px;
-  border-color: greenyellow;
-  transform: rotate(5deg);
+  color: #BFB5A1;
+  font-size: 14px;
+  font-weight: 590;
+  border-color: #BFB5A1;
 }
 
 .status {
@@ -86,72 +88,70 @@ h1 {
 
 .pad-red {
   border-top-left-radius: 200px;
-  background-color: red;
+  background-color: #Dc9996;
 }
 
 .pad-red:hover,
 .pad-red:focus {
-  background-color: #ff451a;
-  transform: rotate(-5deg);
+  background-color: #d17a75;
+  transform: translateX(-5px) translateY(-5px);
 }
 
 .pad-red:active,
 .pad-red.activated {
-  background-color: #ff5c36;
-  transform: translateY(10px);
+  background-color: #d68985;
+  transform: translateX(3px) translateY(3px);
 }
 
 .pad-green {
-  border-top-right-radius: 200px;
-  background-color: green;
-  transform: rotate(180deg);
+  border-bottom-left-radius: 200px;
+  background-color: #A5D6A7;
 }
 
 .pad-green:hover,
 .pad-green:focus {
-  background-color: #8cc218;
-  transform: rotate(175deg);
+  background-color: #81c583;
+  transform: translateX(-5px) translateY(5px);
 }
 
 .pad-green:active,
 .pad-green.activated {
-  background-color: #a0ea00;
-  transform: translateY(10px);
+  background-color: #8fcc91;
+  transform: translateX(3px) translateY(-3px);
 }
 
 .pad-yellow {
   border-bottom-right-radius: 200px;
-  background-color: yellow;
+  background-color: #F6D6A8;
 }
 
 .pad-yellow:hover,
 .pad-yellow:focus {
-  background-color: #ffb900;
-  transform: rotate(5deg);
+  background-color: #f1c17e;
+  transform: translateX(5px) translateY(5px);
 }
 
 .pad-yellow:active,
 .pad-yellow.activated {
-  background-color: #ffca3d;
-  transform: translateY(10px);
+  background-color: #f3ca91;
+  transform: translateX(-3px) translateY(-3px);
 }
 
 .pad-blue {
-  border-bottom-left-radius: 200px;
-  background-color: blue;
-  transform: rotate(180deg);
+  border-top-right-radius: 200px;
+  background-color: #BBDEFB;
 }
 
 .pad-blue:hover,
 .pad-blue:focus {
-  background-color: #139ddd;
-  transform: rotate(185deg);
+  background-color: #8bc7f8;
+  transform: translateX(5px)  translateY(-5px);
 }
 
 .pad-blue:active,
 .pad-blue.activated {
-  background-color: #2bbcff;
-  transform: translateY(10px);
+  background-color: #9fd1f9;
+  transform: translateX(-3px)  translateY(3px);
 }
 
 .hidden {
