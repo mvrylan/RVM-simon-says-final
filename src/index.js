@@ -142,7 +142,6 @@ function activatePads(sequence) {
   setText(heading, (`Round ${roundCount} of ${maxRoundCount}`));
   computerSequence.push(getRandomItem(["red", "blue", "green", "yellow"]));
   activatePads(computerSequence);
-  console.log(computerSequence);
 
   setTimeout(() => playHumanTurn(roundCount), roundCount * 700 + 500); // 5
 }
